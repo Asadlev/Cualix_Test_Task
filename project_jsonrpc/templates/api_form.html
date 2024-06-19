@@ -1,0 +1,24 @@
+<!-- myapp/templates/api_call_form.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+    <h1>JSON-RPC API Call</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="method">Method:</label>
+        <input type="text" id="method" name="method" required value="auth.check"><br><br>
+        <label for="params">Params (JSON format):</label><br>
+        <textarea id="params" name="params">{}</textarea><br><br>
+        <input type="submit" value="Call API">
+    </form>
+
+    {% if result %}
+    <h2>Result:</h2>
+    <pre>{{ result|safe }}</pre>
+    {% endif %}
+</body>
+</html>
